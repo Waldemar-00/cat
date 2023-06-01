@@ -1,7 +1,7 @@
-import Cat from './Cat'
+import RenderCat from './Cat'
 const  App = () => {
   return (
-      <Cat />
+      <RenderCat/>
   );
 }
 

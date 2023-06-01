@@ -31,4 +31,13 @@ class Cat extends React.Component {
       )
     }
 }
-export default Cat
+class RenderCat extends React.Component {
+  render() {
+    return (
+      <>
+        <Cat />
+      </>
+    )
+  }
+}
+export default RenderCat
