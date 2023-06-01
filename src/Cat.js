@@ -1,6 +1,21 @@
 
 import React from 'react'
 import cat from './cat.webp'
+
+class Mouse extends React.Component {
+  render() {
+    const mouse = this.props.mouse
+    return (
+      <>
+        <img
+          src={cat}
+          alt="cat"
+          style={{position: 'absolute', top: `${mouse.y}px`, left: `${mouse.x}px`}}
+        />
+      </>
+    )
+  }
+}
 class Cat extends React.Component {
   constructor(props) {
     super(props)
@@ -14,23 +29,18 @@ class Cat extends React.Component {
       x: e.clientX,
       y: e.clientY
     })
-    console.log(e.clientX, e.clientY)
   }
     render(e) {
-      const {x , y} = this.state
       return (
         <div
           style={{ height: '100%', width: '100%' }}
           onMouseMove={this.mouseMove}>
-          <img
-            src={cat}
-            alt="cat"
-            style={{position: 'absolute', top: `${y}px`, left: `${x}px`}}
-          />
+          <Mouse mouse={this.state}/>
         </div>
       )
     }
 }
+
 class RenderCat extends React.Component {
   render() {
     return (
