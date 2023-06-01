@@ -6,13 +6,11 @@ class Mouse extends React.Component {
   render() {
     const {x, y} = this.props.thisStateFromCat
     return (
-      <>
         <img
           src={cat}
           alt="cat"
-          style={{position: 'absolute', top: `${y}px`, left: `${x}px`}}
+          style={{position: 'relative', top: `${y / 2}px`, left: `${x / 2}px`}}
         />
-      </>
     )
   }
 }
@@ -45,11 +43,9 @@ class Cat extends React.Component {
 class RenderCat extends React.Component {
   render() {
     return (
-      <>
         <Cat render={thisStateFromCat => (
           <Mouse thisStateFromCat={thisStateFromCat}/>
         )}/>
-      </>
     )
   }
 }
