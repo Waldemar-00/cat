@@ -4,13 +4,13 @@ import cat from './cat.webp'
 
 class Mouse extends React.Component {
   render() {
-    const mouse = this.props.mouse
+    const {x, y} = this.props.thisStateFromCat
     return (
       <>
         <img
           src={cat}
           alt="cat"
-          style={{position: 'absolute', top: `${mouse.y}px`, left: `${mouse.x}px`}}
+          style={{position: 'absolute', top: `${y}px`, left: `${x}px`}}
         />
       </>
     )
@@ -35,7 +35,8 @@ class Cat extends React.Component {
         <div
           style={{ height: '100%', width: '100%' }}
           onMouseMove={this.mouseMove}>
-          <Mouse mouse={this.state}/>
+          {/* <Mouse mouse={this.state} /> */}
+          {this.props.render(this.state)}
         </div>
       )
     }
@@ -45,7 +46,9 @@ class RenderCat extends React.Component {
   render() {
     return (
       <>
-        <Cat />
+        <Cat render={thisStateFromCat => (
+          <Mouse thisStateFromCat={thisStateFromCat}/>
+        )}/>
       </>
     )
   }
